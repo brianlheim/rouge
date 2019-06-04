@@ -101,6 +101,13 @@ module Rouge
 
         Cpp
       end
+
+      disambiguate '*.sc' do
+        next Python if matches?(/^#/)
+        next SuperCollider if matches?(/(?:^~|;$)/)
+
+        next Python
+      end
     end
   end
 end
